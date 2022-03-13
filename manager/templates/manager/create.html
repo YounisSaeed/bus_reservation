@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% block content %}
+<h2 class="text-center my-3">Create New Trip</h2>
+<section class="text-center">
+<form class="mx-auto" style="max-width: 60%;" action="" method="POST">
+    {% csrf_token %}
+<input type="text" class="form-control my-3" id="company_name" placeholder="company name" name="company_name"> 
+<input type="text" class="form-control my-3" id="dest_from" placeholder="destination from" name="dest_from">
+<input type="text" class="form-control my-3" id="dest_to" placeholder="destination to" name="dest_to">
+<input type="time" class="form-control my-3" id="time_from" placeholder="time from" name="time_from">
+<input type="time" class="form-control my-3" id="time_to" placeholder="time to" name="time_to">
+<input type="date" class="form-control my-3" id="date_day" placeholder="date day" name="date_day">
+<input type="text" class="form-control my-3" id="price" placeholder="price" name="price">
+<button class="btn btn-primary mx-auto py-12" type="submit" >submit</button>
+</form>
+</section>
+<hr>
+{% endblock content %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+
+    body {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        background-color: #fdfdfd;
+    }
+
+    .head_text {
+        color: white;
+    }
+
+    .card {
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+</style>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <h1> {{ data.company_name }} </h1>
+        <p class=" text-muted">{{ data.date_day }}</p>
+        <p class=" text-muted"> From : {{ data.dest_from }} To :  {{ data.dest_to }}</p>
+        <p class="card-text "> From : {{ data.time_from| safe }} To :  {{ data.time_to }}</p></p>
+        <p>Booking Approved: {{number}}</p>
+        <p>Book in pending status : {{pending}}</p>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div class="card-body">
+  
+    <h4>Book List</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Recet number</th>
+                <th scope="col">Username</th>
+                <th scope="col">Price</th>
+                <th scope="col">status</th>
+                
+            </tr>
+        </thead>
+        <tbody >
+          {% for  rec in recet %}
+            <tr>
+                {% if rec.status == 'pending'%}
+                <td>{{rec.recet_number}}</td>
+                <td>{{rec.author.username}}</td>
+                <td>{{rec.trip_id.price}}</td>
+                <td>{{rec.status}}</td>
+                
+                {% endif %}
+            </tr>
+           {%endfor%}
+        </tbody>
+    </table>
+</div>
+{%endblock%}

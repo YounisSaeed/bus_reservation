@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+{% block content %}
+<h2 class="text-center my-3">Approve</h2>
+<section class="text-center">
+<form class="mx-auto" style="max-width: 60%;" action="" method="POST">
+    {% csrf_token %}
+<input type="text" class="form-control my-3" id="author" value="{{recets.author}}" placeholder="Passanger" name="author"> 
+<input type="text" class="form-control my-3" id="recet_number" value="{{recets.recet_number}}" placeholder="Recet Number" name="recet_number">
+<input type="text" class="form-control my-3" id="trip_id" value="{{recets.trip_id}}" placeholder="destination to" name="trip_id">
+<input type="text" class="form-control my-3" id="status" value="{{reacet.status}}" placeholder="status" name="status">
+<button class="btn btn-primary mx-auto py-12" type="submit" >submit</button>
+</form>
+</section>
+<hr>
+{% endblock content %}

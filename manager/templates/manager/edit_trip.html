@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% block content %}
+<h2 class="text-center my-3">Edit Trip</h2>
+<section class="text-center">
+<form class="mx-auto" style="max-width: 60%;" action="" method="POST">
+    {% csrf_token %}
+<input type="text" class="form-control my-3"  placeholder="company name" value="{{travel.company_name}}"name="company_name"> 
+<input type="text" class="form-control my-3"  placeholder="destination from" value="{{travel.dest_from}}" name="dest_from">
+<input type="text" class="form-control my-3"  placeholder="destination to" value="{{travel.dest_to}}" name="dest_to">
+<input type="time" class="form-control my-3"  placeholder="time from" value="{{travel.from}}" name="time_from">
+<input type="time" class="form-control my-3"  placeholder="time to" value="{{travel.time_to}}"name="time_to">
+<input type="date" class="form-control my-3" placeholder="date day" value="{{travel.date_day}}"name="date_day">
+<input type="text" class="form-control my-3" placeholder="price" value="{{travel.price}}"name="price">
+<button class="btn btn-primary mx-auto py-12" type="submit" >submit</button>
+</form>
+</section>
+<hr>
+{% endblock content %}

@@ -1,0 +1,67 @@
+{% extends 'base.html'%}
+{% block content %}
+<h2 class="text-center my-3">Create New Trip</h2>
+<section class="text-center">
+<form class="mx-auto" style="max-width: 60%;">
+<input type="text" class="form-control my-3" id="company_name" placeholder="company name">
+<input type="text" class="form-control my-3" id="dest_from" placeholder="destination from">
+<input type="text" class="form-control my-3" id="dest_to" placeholder="destination to">
+<input type="time" class="form-control my-3" id="time_from" placeholder="time from">
+<input type="time" class="form-control my-3" id="time_to" placeholder="time to">
+<input type="date" class="form-control my-3" id="date_day" placeholder="date day">
+<input type="text" class="form-control my-3" id="price" placeholder="price">
+<input type="text" class="form-control my-3" id="author" placeholder="author">
+<button class="btn btn-primary mx-auto py-12" type="button" onclick="new_trip()">submit</button>
+</form>
+</section>
+<hr>
+<script>
+    function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+
+    function new_trip(){
+        const body={
+            company_name: document.getElementById('company_name').value,
+            dest_from: document.getElementById('dest_from').value,
+            dest_to: document.getElementById('dest_to').value,
+            time_from: document.getElementById('time_from').value,
+            time_to: document.getElementById('time_to').value,
+            date_day: document.getElementById('date_day').value,
+            price: document.getElementById('price').value,
+            author: document.getElementById('author').value,
+            
+        } 
+        console.log(body)
+         axios.post("http://127.0.0.1:8000/api/trips",body,{headers: {'X-CSRFToken': csrftoken}}).then(response =>{
+            
+            console.log("created successfully")
+            console.log(response.data)
+         }).catch(err =>{ console.log(err)})
+    }
+    function delete_trip(id){
+        axios.delete(`http://127.0.0.1:8000/api/trips/${id}`).then(response =>{
+            console.log("deleted successfully")
+           console.log(response.data)
+        }).catch(err =>{ console.log(err)})
+   }
+   function list_trips(){
+    axios.get("http://127.0.0.1:8000/api/trips").then(response =>{
+       console.log(response.data)
+    }).catch(err =>{ console.log(err)})
+}
+    </script>
+{% endblock%}

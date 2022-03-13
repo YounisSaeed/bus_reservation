@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+<div class="card-body">
+  
+    <h4>Book List</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Recet number</th>
+                <th scope="col">Username</th>
+                <th scope="col">Price</th>
+                <th scope="col">status</th>
+                
+            </tr>
+        </thead>
+        <tbody >
+            {% if searched %}
+          {% for  rec in BOOKS %}
+            <tr>
+                <td>{{rec.recet_number}}</td>
+                <td>{{rec.author.username}}</td>
+                <td>{{rec.trip_id.price}}</td>
+                <td>{{rec.status}}</td>
+                <td>
+                    <a type="button" class="btn btn-warning" href="{% url 'status' rec.id %}">Book</a>
+                  
+
+                </td>
+                
+            </tr>
+           {%endfor%}
+           {%else%}
+           <p>Please type recet number </p>
+           {% endif %}
+        </tbody>
+    </table>
+  
+</div>
+{% endblock content %}

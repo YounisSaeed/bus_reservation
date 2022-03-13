@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+header {
+    background-image: url(../assets/main-banner.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 90vh;
+    padding-top: 30px;
+
+}
+
+h1 {
+  font-family: 'Fantasy';
+  font-size: 8rem;
+  text-align: center;;
+  line-height: 100px;
+  text-transform: uppercase;
+}
+
+header {
+    position: relative;
+}
+
+.banner-content {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+</style>
+<header class="clearfix">
+    <div class="wrapper">
+<div class="banner-content">
+    <h1>Bus <br> Reserve <br> Tickets</h1>
+    
+  </div>
+</div>
+</header>
+{% endblock content %}
+

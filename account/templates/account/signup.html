@@ -1,0 +1,53 @@
+{%extends 'base.html'%}
+{% block content %}
+
+<section class="vh-100" style="background-color:white;">
+  <form method="POST">
+    {% csrf_token %}
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <h3 class="mb-5">Sign Up</h3>
+
+            <div class="form-outline mb-4">
+              <input type="text" id="typeEmailX-2" placeholder="Username" name="username"class="form-control form-control-lg" />
+            </div>
+            <div class="form-outline mb-4">
+              <input type="email" id="typeEmailX-2" placeholder="Email" name="email"class="form-control form-control-lg" />
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="password" id="typePasswordX-2" placeholder="Password" name="password1" class="form-control form-control-lg" />
+            </div>
+            <div class="form-outline mb-4">
+              <input type="password" id="typePasswordX-2" placeholder="Confirm Your Password" name="password2" class="form-control form-control-lg" />
+            </div>
+            {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}  
+
+            <small>password must contains digit and characters</small>
+            <input class="btn btn-primary btn-lg btn-block" type="submit" value="Register" />
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+</section>
+{% endblock content %}

@@ -1,0 +1,40 @@
+
+{% extends "base.html" %}
+{% block content %}
+<div class="card-body">
+    <h4>Book List</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Company name</th>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">from hours</th>
+                <th scope="col">to hours</th>
+                <th scope="col">date</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody >
+            {% for book in data %}
+            <tr>
+                <td>{{ book.company_name }}</td>
+                <td>{{ book.dest_from }}</td>
+                <td>{{ book.dest_to }}</td>
+                <td>{{ book.time_from }}</td>
+                <td>{{ book.time_to }}</td>
+                <td>{{book.date_day}}</td>
+                <td>
+                    <a type="button" class="btn btn-warning" href="{% url 'edit' book.id %}">Edit</a>
+                    <a type="button" class="btn btn-danger" href="{% url 'delete' book.id%}">Delete</a>
+                    <a type="button" class="btn btn-success" href="{% url 'detail' book.id%}">Details</a>
+
+                </td>
+            </tr>
+           {%endfor%}
+        </tbody>
+    </table>
+    <a type="button" class="btn btn-success" href="{% url 'create' %}">Create</a> 
+</div>
+
+{% endblock %}
