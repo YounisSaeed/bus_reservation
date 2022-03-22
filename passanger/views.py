@@ -33,3 +33,11 @@ def book_trip(request):
         use = Book.objects.create(author=author,trip_id=trip)
         context={"book":use}
         return render(request,'passanger/invoice.html',context)
+####################################################
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['passanger'])
+def search_dest(request):
+    if request.method=='POST':
+        searched = request.POST['searched_from']
+        dest_from = Trip.objects.filter(dest_from__contains=searched)
+    return render(request,'passanger/search_dest.html',{'searched_from':searched,'from':dest_from,})

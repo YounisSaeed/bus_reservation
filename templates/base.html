@@ -56,6 +56,11 @@
                         
                         {% if user.is_authenticated %}
                         {% if user.groups.all.0.name == 'passanger' %}
+                        <form class="form-inline" method='POST' action="{% url 'SEARCH' %}">
+                            {% csrf_token %}
+                            <input class="form-control mr-sm-2" type="search" placeholder="Destination From" name="searched_from" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                          </form>
                         <li class="nav-item text-black">
                             <a class="nav-link text-black font-weight-bold" href="{% url 'list' %}">Trips</a>
                         </li>
