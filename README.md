@@ -7,6 +7,7 @@ Bus Resevation tickets system
 * activate booking
 ### Passanger
 * Browse for trips
+* search for trip form his destination 
 * booking trips
 * Generating automatic number for invoice
 ## Setup
